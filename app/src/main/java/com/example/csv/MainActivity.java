@@ -71,57 +71,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-Next.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        CSVReader reader = null;
-        CSVWriter csvWriter= null;
-        String[] row = null;
-        String[] FileEx=new String[]{"a","b","c","d"};
-       for(int i=0;i<=3;i++)
-       {
-           try {
-               reader = new CSVReader(new FileReader("/sdcard/hridoy/"+FileEx[i]+".csv"));
-               List myEntries = reader.readAll();
-               reader.close();
+        Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CSVReader reader = null;
+                CSVWriter csvWriter= null;
+                String[] row = null;
+                String[] FileEx=new String[]{"a","b","c","d"};
+                for(int i=0;i<=3;i++)
+                {
+                    try {
+                        reader = new CSVReader(new FileReader("/sdcard/hridoy/"+FileEx[i]+".csv"));
+                        List myEntries = reader.readAll();
+                        reader.close();
 
-               File file = new File("/sdcard/hridoy");
-               file.mkdir();
-               String csv = "/sdcard/hridoy/e.csv";
-               try {
-                   csvWriter = new CSVWriter(new FileWriter(csv, true));
+                        File file = new File("/sdcard/hridoy");
+                        file.mkdir();
+                        String csv = "/sdcard/hridoy/e.csv";
+                        try {
+                            csvWriter = new CSVWriter(new FileWriter(csv, true));
 
-                   String element[] = null;
-                   // int i=0;
-                   //while((myEntries.get(i)) != null)
-                   {
-                       for (Object object : myEntries) {
-                           row = (String[]) object;
+                            String element[] = null;
+                            // int i=0;
+                            //while((myEntries.get(i)) != null)
+                            {
+                                for (Object object : myEntries) {
+                                    row = (String[]) object;
 
-                           csvWriter.writeNext(row);
+                                    csvWriter.writeNext(row);
 
-                       }
+                                }
 
-                       csvWriter.close();
-                       reader.close();
-                       // i++;
-                       // Toast.makeText(MainActivity.this,   row[0]+""+myEntries.get(i)+""+reader.readNext()+" "+reader.peek(), Toast.LENGTH_LONG).show();
-                   }
-               } catch (IOException e) {
-                   e.printStackTrace();
-               }
+                                csvWriter.close();
+                                reader.close();
+                                // i++;
+                                // Toast.makeText(MainActivity.this,   row[0]+""+myEntries.get(i)+""+reader.readNext()+" "+reader.peek(), Toast.LENGTH_LONG).show();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
 
-           } catch (FileNotFoundException e) {
-               e.printStackTrace();
-           } catch (IOException e) {
-               e.printStackTrace();
-           }
-       }
-        Toast.makeText(MainActivity.this, "Data Added Successfully...", Toast.LENGTH_LONG).show();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                Toast.makeText(MainActivity.this, "Data Added Successfully...", Toast.LENGTH_LONG).show();
 
-    }
-});
+            }
+        });
 
 
     }
